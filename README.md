@@ -36,7 +36,7 @@ The key components of this Deformable GCN implementation are:
 ## Model Architecture
 
 ### 1. Graph Smoothing Layer (`graphSmoothing`)
-This module applies T-step feature smoothing on the graph to capture long-range dependencies and generate positional embeddings 𝜙.
+This module applies T-step feature smoothing on the graph to capture long-range dependencies and generate positional embeddings $𝜙$.
 
 At each step $\( t \)$, the feature is updated via:
 
@@ -66,7 +66,7 @@ $$
 
 This relation vector is used to compute an attention coefficient $\( \alpha_{ij} \)$, which controls how much information node $\( i \)$ receives from node $\( j \)$.
 
-The attention score is computed via:
+The attention score is computed as:
 
 $$
 \alpha_{ij} = \text{softmax}_j \left( \text{MLP}(r_{ij}) \right)
