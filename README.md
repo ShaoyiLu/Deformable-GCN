@@ -34,15 +34,15 @@ The key components of this Deformable GCN implementation are:
 ---
 
 ## Model Architecture
-This module performs T-step graph feature smoothing to capture long-range dependencies and generate positional embeddings \( \phi \).
+This module performs T-step graph feature smoothing to capture long-range dependencies and generate positional embeddings $\( \phi \)$.
 
-At each step \( t \), the feature is updated via:
+At each step $\( t \)$, the feature is updated via:
 
 $$
 x^{(t)} = \frac{1}{|\mathcal{N}(v)|} \sum_{u \in \mathcal{N}(v)} x_u^{(t-1)}
 $$
 
-The final positional embedding is obtained by averaging over all \( T \) steps:
+The final positional embedding is obtained by averaging over all $\( T \)$ steps:
 
 $$
 \phi_v = \frac{1}{T} \sum_{t=1}^{T} x_v^{(t)}
