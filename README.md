@@ -29,7 +29,7 @@ The key components of this Deformable GCN implementation are:
    It is a learned attention mechanism fuses information from various latent graph views, enabling adaptive integration across different graph granularities.
 
 5. **Loss Function**  
-   Includes classification loss, separation loss and focus loss to enhance model interpretability and ensure stable training.
+   It also adds two regularization losses to improve how clearly the model separates classes and to keep the training process more stable.
 
 ---
 
@@ -158,7 +158,7 @@ pip install -r requirements.txt
 
 ---
 
-### 2. Run Model
+### 2. Run the Model
 
 Open and run all cells in
 
@@ -216,4 +216,4 @@ all passed
 
 ## Summary
 
-This project offers a clean and modular implementation of Deformable Graph Convolutional Networks, with a focus on understanding the behavior on heterophilic datasets. By combining smoothed positional embeddings with dynamic attention over latent graphs, the model adapts effectively to non-homophilic structures that are something that traditional GCNs often struggle with.
+In this project, I aimed to better understand how Deformable Graph Convolutional Networks can improve performance on heterophilic datasets like chameleon I used. By combining positional embeddings and attention-based aggregation over latent graphs, the model learns to extract meaningful patterns even when connected nodes belong to different classes which is a scenario where traditional GCNs usually fail. The implementation is structured for clarity, and I’ve included tools for training, evaluation, and reproducibility.
