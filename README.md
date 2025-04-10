@@ -38,7 +38,7 @@ The key components of this Deformable GCN implementation are:
 ### 1. Graph Smoothing Layer (`graphSmoothing`)
 This module applies T-step feature smoothing on the graph to capture long-range dependencies and generate positional embeddings $𝜙$.
 
-At each step $\( t \)$, the feature is updated via:
+At each step $\( t \)$, the feature is updated as:
 
 $$
 x^{(t)} = \frac{1}{|\mathcal{N}(v)|} \sum_{u \in \mathcal{N}(v)} x_u^{(t-1)}
