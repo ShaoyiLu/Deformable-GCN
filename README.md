@@ -83,7 +83,7 @@ Open and run all cells in
 notebooks/model_training.ipynb
 ```
 
-trianing log will be saved to
+Then trianing log will be saved to
 ```
 results/output.txt
 results/final_test_accuracy
@@ -101,3 +101,22 @@ Final Test Accuracy: 66.67%
 ```
 
 ---
+
+## Testing
+
+Verify that if the data meets the requirements
+
+```bash
+python tests.py
+```
+
+Good output：
+```
+all passed
+```
+
+---
+
+## Acknowledgement
+
+This project is developed for exploring graph learning in controlled synthetic environments using Deformable GCN.
