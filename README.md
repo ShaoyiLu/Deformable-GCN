@@ -99,13 +99,13 @@ $$
 L_{total} = L_{Cross Entropy} + α ⋅ L_{sep} + β ⋅ L_{focus}
 $$
 
-**Separation Loss** \( \mathcal{L}_{\text{sep}} \): Encourages inter-class separation in feature space:
+**Separation Loss** $\( \mathcal{L}_{\text{sep}} \)$: Encourages inter-class separation in feature space:
 
 $$
 L_{sep} = ∑_{c1 ≠ c2} cos(μ_c1, μ_c2)
 $$
 
-**Focus Loss** \( \mathcal{L}_{\text{focus}} \): Reduces intra-class attention variance:
+**Focus Loss** $\( \mathcal{L}_{\text{focus}} \)$: Reduces intra-class attention variance:
 
 $$
 L_{focus} = ∑{c} ∑{i ∈ C_c} || x_i^att - μ_c^att ||²
