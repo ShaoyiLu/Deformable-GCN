@@ -34,7 +34,7 @@ The key components of this Deformable GCN implementation are:
 ---
 
 ## Model Architecture
-This module performs T-step graph feature smoothing to capture long-range dependencies and generate positional embeddings $\( \phi \)$.
+This module applies T-step feature smoothing on the graph to capture long-range dependencies and generate positional embeddings 𝜙.
 
 At each step $\( t \)$, the feature is updated via:
 
@@ -48,8 +48,8 @@ $$
 \phi_v = \frac{1}{T} \sum_{t=1}^{T} x_v^{(t)}
 $$
 
-- **Input:** Raw node features \( x \in \mathbb{R}^{N \times F} \)  
-- **Output:** Smoothed embeddings \( \phi \in \mathbb{R}^{N \times T \times F} \)
+- **Input:** Raw node features $\( x \in \mathbb{R}^{N \times F} \) $ 
+- **Output:** Smoothed embeddings $\( \phi \in \mathbb{R}^{N \times T \times F} \)$
 ---
 
 ### 2. Deformable GCN Layers (`GCNConvolution`)
