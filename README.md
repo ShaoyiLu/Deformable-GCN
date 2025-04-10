@@ -1,10 +1,10 @@
-# Deformable Graph Convolutional Network on Chameleon Dataset
+# Deformable Graph Convolutional Network
 
 ## Introduction
 
 This project implements a reproduction of the paper **"Deformable Graph Convolutional Networks"** using PyTorch. The main goal is to address the limitations of standard Graph Neural Networks when applied to **heterophilic graphs**, by learning node positional embeddings and applying deformable convolution kernels on latent graphs.
 
-The project includes:
+This project includes:
 - Graph smoothing for positional embeddings
 - Deformable GCN layers with attention-based aggregation
 - Custom graph construction using KNN
@@ -65,7 +65,7 @@ name
 └── requirements.txt
 ```
 
-## How to Run the Project
+## How to Run the Code
 
 ### 1. Install Dependencies
 
@@ -77,8 +77,27 @@ pip install -r requirements.txt
 
 ### 2. Run Model
 
-Open and run all cells in:
+Open and run all cells in
 
 ```
 notebooks/model_training.ipynb
 ```
+
+trianing log will be saved to
+```
+results/output.txt
+results/final_test_accuracy
+```
+
+---
+
+## Sample Output
+
+```
+Epoch 102 | Train Accuracy: 60.16% | Validation Accuracy: 60.63%
+Epoch 200 | Train Accuracy: 64.84% | Validation Accuracy: 64.88%
+...
+Final Test Accuracy: 66.67%
+```
+
+---
