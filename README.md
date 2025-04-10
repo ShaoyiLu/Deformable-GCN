@@ -38,33 +38,33 @@ The key components of this Deformable GCN implementation are:
 ### 1. Graph Smoothing Layer (method `graphSmoothing`)
 This module applies T-step feature smoothing on the graph to capture long-range dependencies and generate positional embeddings $𝜙$.
 
-At each step $\( t \)$, the feature is updated as:
+At each step $t$, the feature is updated as:
 
 $$
 x^{(t)} = \frac{1}{|\mathcal{N}(v)|} \sum_{u \in \mathcal{N}(v)} x_u^{(t-1)}
 $$
 
-The final positional embedding is obtained by averaging over all $\( T \)$ steps:
+The final positional embedding is obtained by averaging over all $T$ steps:
 
 $$
 \phi_v = \frac{1}{T} \sum_{t=1}^{T} x_v^{(t)}
 $$
 
-- **Input:** Raw node features $\( x \in \mathbb{R}^{N \times F} \) $ 
-- **Output:** Smoothed embeddings $\( \phi \in \mathbb{R}^{N \times T \times F} \)$
+- **Input:** Raw node features $x \in \mathbb{R}^{N \times F}$ 
+- **Output:** Smoothed embeddings $\phi \in \mathbb{R}^{N \times T \times F}$
 ---
 
 ### 2. Deformable GCN Layers (method `GCNConvolution`)
 
 These layers perform message passing with dynamic attention over latent relation vectors between nodes.
 
-Given a pair of nodes $\( i \)$ and $\( j \)$, their relation vector is defined as:
+Given a pair of nodes $i$ and $j$, their relation vector is defined as:
 
 $$
 r_{ij} = \phi_i - \phi_j
 $$
 
-This relation vector is used to compute an attention coefficient $\( \alpha_{ij} \)$, which controls how much information node $\( i \)$ receives from node $\( j \)$.
+This relation vector is used to compute an attention coefficient $\alpha_{ij}$, which controls how much information node $i$ receives from node $j$.
 
 The attention score is computed as:
 
@@ -72,7 +72,7 @@ $$
 \alpha_{ij} = \frac{ \exp\left( \text{MLP}(r_{ij}) \right) }{ \sum_{k \in \mathcal{N}(i)} \exp\left( \text{MLP}(r_{ik}) \right) }
 $$
 
-Then, the message from node $\( j \)$ to $\( i \)$ is modulated as:
+Then, the message from node $j$ to $i$ is modulated as:
 
 $$
 m_{ij} = \alpha_{ij} \cdot W x_j
@@ -85,9 +85,9 @@ x_i^{\text{new}} = \sum_{j \in \mathcal{N}(i)} m_{ij}
 $$
 
 Where:
-- $\( \phi_i \in \mathbb{R}^F \)$ is the smoothed feature of node $\( i \)$.
-- $\( W \in \mathbb{R}^{F \times F'} \)$ is a learnable weight matrix.
-- $\( \mathcal{N}(i) \)$ is the neighborhood of node $\( i \)$.
+- $\phi_i \in \mathbb{R}^F$ is the smoothed feature of node $i$.
+- $W \in \mathbb{R}^{F \times F'}$ is a learnable weight matrix.
+- $\mathcal{N}(i)$ is the neighborhood of node $i$.
 
 ---
 
@@ -99,13 +99,13 @@ $$
 L_{total} = L_{Cross Entropy} + α ⋅ L_{sep} + β ⋅ L_{focus}
 $$
 
-**Separation Loss** $\( \mathcal{L}_{\text{sep}} \)$: Encourages separation between different classes in feature space:
+**Separation Loss** $\mathcal{L}_{\text{sep}}$: Encourages separation between different classes in feature space:
 
 $$
 L_{sep} = ∑_{c1 ≠ c2} cos(μ_c1, μ_c2)
 $$
 
-**Focus Loss** $\( \mathcal{L}_{\text{focus}} \)$: Reduces variation within the same class attention variance:
+**Focus Loss** $\mathcal{L}_{\text{focus}}$: Reduces variation within the same class attention variance:
 
 $$
 L_{focus} = ∑{c} ∑{i ∈ C_c} || x_i^att - μ_c^att ||²
