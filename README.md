@@ -213,6 +213,6 @@ all passed
 
 ---
 
-## Acknowledgement
+## Summary
 
 This project is developed for exploring graph learning in controlled synthetic environments using Deformable GCN.
