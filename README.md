@@ -99,15 +99,13 @@ $$
 \mathcal{L}_{\text{total}} = \mathcal{L}_{\text{CE}} + \alpha \cdot \mathcal{L}_{\text{sep}} + \beta \cdot \mathcal{L}_{\text{focus}}
 $$
 
-- **Separation Loss ($\mathcal{L}_{\text{sep}}$):**  
-  Encourages inter-class separation in feature space by penalizing cosine similarity between class centroids:
+**Separation Loss** \( \mathcal{L}_{\text{sep}} \): Encourages inter-class separation in feature space:
 
 $$
-\mathcal{L}_{\text{sep}} = \sum_{c_1 \neq c_2} \cos \left( \mu_{c_1}, \mu_{c_2} \right)
+\mathcal{L}_{\text{sep}} = \sum_{c_1 \ne c_2} \cos(\mu_{c_1}, \mu_{c_2})
 $$
 
-- **Focus Loss ($\mathcal{L}_{\text{focus}}$):**  
-  Reduces intra-class variance of attention-weighted node representations:
+**Focus Loss** \( \mathcal{L}_{\text{focus}} \): Reduces intra-class attention variance:
 
 $$
 \mathcal{L}_{\text{focus}} = \sum_c \sum_{i \in \mathcal{C}_c} \left\| x_i^{\text{att}} - \mu_c^{\text{att}} \right\|^2
