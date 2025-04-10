@@ -35,7 +35,6 @@ The key components of this Deformable GCN implementation are:
 
 ## Project Structure
 
-```bash
 ```
 ├── data/
 │   ├── raw/
