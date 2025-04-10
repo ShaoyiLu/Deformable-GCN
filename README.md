@@ -93,7 +93,7 @@ Where:
 
 ### 3. Custom Regularization Losses (method `DeformableGCN`)
 
-The last model is a combination of cross-entropy classification loss, separation loss, and focus loss:
+The final loss combines classification with two regularization terms:
 
 $$
 L_{total} = L_{Cross Entropy} + α ⋅ L_{sep} + β ⋅ L_{focus}
@@ -217,4 +217,4 @@ all passed
 
 ## Summary
 
-This project is developed for exploring graph learning in controlled synthetic environments using Deformable GCN.
+This project offers a clean and modular implementation of Deformable Graph Convolutional Networks, with a focus on understanding their behavior on heterophilic datasets. By combining smoothed positional embeddings with dynamic attention over latent graphs, the model adapts effectively to non-homophilic structures—something traditional GCNs often struggle with.
