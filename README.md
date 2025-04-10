@@ -96,7 +96,8 @@ Where:
 The last model is a combination of cross-entropy classification loss, separation loss, and focus loss:
 
 $$
-\mathcal{L}_{\text{total}}  = \mathcal{L}_{\text{CE}}
+\mathcal{L}_{\text{total}}  = \mathcal{L}_{\text{CE}} + \alpha \cdot \mathcal{L}_{\text{sep}} + \beta \cdot \mathcal{L}_{\text{focus}}
+$$
 
 **Separation Loss** \( \mathcal{L}_{\text{sep}} \): Encourages inter-class separation in feature space:
 
