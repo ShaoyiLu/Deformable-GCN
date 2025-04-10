@@ -17,19 +17,19 @@ This project includes:
 The key components of this Deformable GCN implementation are:
 
 1. **Node Positional Embedding**  
-   Uses multi-step feature smoothing to learn continuous latent node coordinates (φ), which capture long-range relationships.
+   Learn continuous latent node coordinates (φ) that capture long range dependencies by applying multi-step feature smoothing.
 
 2. **Latent Graph Construction**  
-   Based on smoothed features, multiple kNN graphs are generated to define latent neighborhoods for convolution.
+   Latent neighborhoods are constructed by generating multiple kNN graphs from the smoothed node features.
 
 3. **Deformable Graph Convolution**  
    Applies dynamic attention-based aggregation on neighbor features using relation vectors and kernel deformations.
 
 4. **Attention Aggregation**  
-   Combines multiple latent graph outputs through a learned attention score to adaptively fuse multi-scale information.
+   It is a learned attention mechanism fuses information from various latent graph views, enabling adaptive integration across different graph granularities.
 
 5. **Loss Function**  
-   Includes classification loss, separation loss and focus loss for better interpretability and training stability.
+   Includes classification loss, separation loss and focus loss to enhance model interpretability and ensure stable training.
 
 ---
 
