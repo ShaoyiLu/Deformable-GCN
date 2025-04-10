@@ -108,7 +108,7 @@ $$
 **Focus Loss** \( \mathcal{L}_{\text{focus}} \): Reduces intra-class attention variance:
 
 $$
-L_{focus} = ∑c ∑{i ∈ C_c} || x_i^att - μ_c^att ||²
+L_{focus} = ∑{c} ∑{i ∈ C_c} || x_i^att - μ_c^att ||²
 $$
 
 Where:
