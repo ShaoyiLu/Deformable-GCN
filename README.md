@@ -69,7 +69,7 @@ This relation vector is used to compute an attention coefficient $\( \alpha_{ij}
 The attention score is computed as:
 
 $$
-\alpha_{ij} = \text{softmax}_j \left( \text{MLP}(r_{ij}) \right)
+\alpha_{ij} = \frac{ \exp\left( \text{MLP}(r_{ij}) \right) }{ \sum_{k \in \mathcal{N}(i)} \exp\left( \text{MLP}(r_{ik}) \right) }
 $$
 
 Then, the message from node $\( j \)$ to $\( i \)$ is modulated as:
