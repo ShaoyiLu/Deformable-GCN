@@ -120,33 +120,32 @@ Where:
 ## Project Structure
 
 ```
-name
-├── data/
-│   ├── raw/
-│   │   └── 10 splits raw .npz files
-│   └── processed/
-│       └── chameleons.csv
+project_name/
+├── data/                          # Folder for datasets
+│   ├── raw/                       # Raw data files (10 Chameleon .npz splits)
+│   └── processed/                 # Processed data files
+│       └── chameleons.csv         # Data for features of chameleons
 │
-├── notebooks/
-│   └── model_training.ipynb
+├── notebooks/                     # Jupyter notebooks for exploration and prototyping
+│   └── model_training.ipynb       # Main method for training model
 │
-├── results/
-|   ├── final_test_accuracy.txt
-│   └── output.txt
+├── results/                       # Results of experiments
+│   ├── output.txt                 # Output of training and validation accuracy each epoch
+│   └── final_test_accuracy.txt    # Final test accuracy result
 │
-├── src/
-│   ├── data_processing/
-│   │   └── load_data.py
-│   ├── evaluation/
-│   │   └── evaluate.py
-│   ├── models/
-│   │   └── deformable_gcn.py
-│   └── utils/
-│       └── knn_graph.py
+├── src/                           # Source code for the project
+│   ├── data_processing/           # Scripts for data loading and preprocessing
+│   │   └── load_data.py           # Loading data
+│   ├── evaluation/                # Scripts for evaluation and metrics
+│   │   └── evaluate.py            # Training and evaluation
+│   ├── models/                    # Model definition and loss functions
+│   │   └── deformable_gcn.py      # Core Deformable GCN model with smoothing and regularization
+│   └── utils/                     # Helper functions or utilities
+│       └── knn_graph.py           # Function to build KNN edge index from features
 │
-├── tests.py
-├── README.md 
-└── requirements.txt
+├── tests.py                       # Script to verify data integrity and pipeline readiness
+├── README.md                      # Project overview, instructions, and explanation
+└── requirements.txt               # List of required Python dependencies
 ```
 
 ## How to Run the Code
