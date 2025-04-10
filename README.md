@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project implements a reproduction of the paper **"Deformable Graph Convolutional Networks"** using PyTorch. The main goal is to address the limitations of standard Graph Neural Networks when applied to **heterophilic graphs**, by learning node positional embeddings and applying deformable convolution kernels on latent graphs.
+This project implements a reproduction of the paper **"Deformable Graph Convolutional Networks"** using PyTorch. The main goal is to address the limitations of standard Graph Neural Networks when applied to heterophilic graphs, by learning node positional embeddings and applying deformable convolution kernels on latent graphs.
 
 This project includes:
 - Graph smoothing for positional embeddings
@@ -35,7 +35,7 @@ The key components of this Deformable GCN implementation are:
 
 ## Model Architecture
 
-### 1. Graph Smoothing Layer (`graphSmoothing`)
+### 1. Graph Smoothing Layer (method `graphSmoothing`)
 This module applies T-step feature smoothing on the graph to capture long-range dependencies and generate positional embeddings $𝜙$.
 
 At each step $\( t \)$, the feature is updated as:
@@ -54,7 +54,7 @@ $$
 - **Output:** Smoothed embeddings $\( \phi \in \mathbb{R}^{N \times T \times F} \)$
 ---
 
-### 2. Deformable GCN Layers (`GCNConvolution`)
+### 2. Deformable GCN Layers (method `GCNConvolution`)
 
 These layers perform message passing with dynamic attention over latent relation vectors between nodes.
 
@@ -91,9 +91,31 @@ Where:
 
 ---
 
-### 3. Custom Regularization Losses (inside `DeformableGCN`)
-- **Separation Loss (`l_separation`)**: Encourages class-wise feature vectors to be more separable in feature space using negative cosine similarity between class means
-- **Focus Loss (`l_focus`)**: Minimizes intra-class variance in attention-weighted features to make attention more consistent within each class
+### 3. Custom Regularization Losses (method `DeformableGCN`)
+
+The last model is a combination of cross-entropy classification loss, separation loss, and focus loss:
+
+$$
+\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{CE}} + \alpha \cdot \mathcal{L}_{\text{sep}} + \beta \cdot \mathcal{L}_{\text{focus}}
+$$
+
+- **Separation Loss ($\mathcal{L}_{\text{sep}}$):**  
+  Encourages inter-class separation in feature space by penalizing cosine similarity between class centroids:
+
+$$
+\mathcal{L}_{\text{sep}} = \sum_{c_1 \neq c_2} \cos \left( \mu_{c_1}, \mu_{c_2} \right)
+$$
+
+- **Focus Loss ($\mathcal{L}_{\text{focus}}$):**  
+  Reduces intra-class variance of attention-weighted node representations:
+
+$$
+\mathcal{L}_{\text{focus}} = \sum_c \sum_{i \in \mathcal{C}_c} \left\| x_i^{\text{att}} - \mu_c^{\text{att}} \right\|^2
+$$
+
+Where:
+- $\mu_c$ is the average feature vector of class $c$
+- $x_i^{\text{att}}$ is the attention-weighted embedding of node $i$
 
 ---
 
