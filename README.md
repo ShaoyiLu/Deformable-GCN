@@ -33,6 +33,40 @@ The key components of this Deformable GCN implementation are:
 
 ---
 
+## Model Architecture
+This module performs T-step graph feature smoothing to capture long range dependencies and generate positional embeddings φ.
+
+At each step \( t \), the feature is updated via:
+
+\[
+x^{(t)} = \frac{1}{|\mathcal{N}(v)|} \sum_{u \in \mathcal{N}(v)} x_u^{(t-1)}
+\]
+
+The final positional embedding is obtained by averaging over all \( T \) steps:
+
+\[
+\phi_v = \frac{1}{T} \sum_{t=1}^{T} x_v^{(t)}
+\]
+
+- **Input:** Raw node features \( x \in \mathbb{R}^{N \times F} \)
+- **Output:** Smoothed embeddings \( \phi \in \mathbb{R}^{N \times T \times F} \)
+
+---
+
+### 2. Deformable GCN Layers (`GCNConvolution`)
+These layers perform message passing with dynamic attention:
+- Uses a learned attention mechanism between `(source, target)` node pairs
+- The message from neighbor nodes is reweighted by learned importance scores
+- Two such layers are stacked: the first maps input to hidden, the second maps hidden to output logits
+
+---
+
+### 3. Custom Regularization Losses (inside `DeformableGCN`)
+- **Separation Loss (`l_separation`)**: Encourages class-wise feature vectors to be more separable in feature space using negative cosine similarity between class means
+- **Focus Loss (`l_focus`)**: Minimizes intra-class variance in attention-weighted features to make attention more consistent within each class
+
+---
+
 ## Project Structure
 
 ```
@@ -83,7 +117,7 @@ Open and run all cells in
 notebooks/model_training.ipynb
 ```
 
-Then trianing log will be saved to
+Then training log will be saved to
 ```
 results/output.txt
 results/final_test_accuracy
@@ -98,7 +132,7 @@ All core parameters are configured inside `model_training.ipynb`. You can freely
 | Name        | Description                              | Default |
 |-------------|------------------------------------------|---------|
 | `k`         | Number of neighbors for KNN graph        | 16      |
-| `layer`     | Layer size in the GCN model              | 256     |
+| `layer`     | Layer dimension in the GCN model         | 256     |
 | `alpha`     | Weight for separation loss               | 0.001   |
 | `beta`      | Weight for focus loss                    | 0.0001  |
 | `epochs`    | Total number of training epoch           | 400     |
