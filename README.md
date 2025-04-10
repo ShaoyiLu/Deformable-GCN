@@ -217,4 +217,4 @@ all passed
 
 ## Summary
 
-This project offers a clean and modular implementation of Deformable Graph Convolutional Networks, with a focus on understanding their behavior on heterophilic datasets. By combining smoothed positional embeddings with dynamic attention over latent graphs, the model adapts effectively to non-homophilic structures—something traditional GCNs often struggle with.
+This project offers a clean and modular implementation of Deformable Graph Convolutional Networks, with a focus on understanding their behavior on heterophilic datasets. By combining smoothed positional embeddings with dynamic attention over latent graphs, the model adapts effectively to non-homophilic structures that are something that traditional GCNs often struggle with.
