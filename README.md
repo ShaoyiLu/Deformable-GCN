@@ -95,18 +95,20 @@ Where:
 
 The last model is a combination of cross-entropy classification loss, separation loss, and focus loss:
 
+$$
 L_total = L_CE + α ⋅ L_sep + β ⋅ L_focus
+$$
 
 **Separation Loss** \( \mathcal{L}_{\text{sep}} \): Encourages inter-class separation in feature space:
 
 $$
-L_(sep) = ∑_{c1 ≠ c2} cos(μ_c1, μ_c2)
+L_{sep} = ∑_{c1 ≠ c2} cos(μ_c1, μ_c2)
 $$
 
 **Focus Loss** \( \mathcal{L}_{\text{focus}} \): Reduces intra-class attention variance:
 
 $$
-L_(focus) = ∑c ∑{i ∈ C_c} || x_i^att - μ_c^att ||²
+L_{focus} = ∑c ∑{i ∈ C_c} || x_i^att - μ_c^att ||²
 $$
 
 Where:
