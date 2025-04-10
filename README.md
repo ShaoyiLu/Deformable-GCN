@@ -4,7 +4,7 @@
 
 This project implements a reproduction of the paper **"Deformable Graph Convolutional Networks"** using PyTorch. The main goal is to address the limitations of standard Graph Neural Networks when applied to heterophilic graphs, by learning node positional embeddings and applying deformable convolution kernels on latent graphs.
 
-This project includes:
+It includes:
 - Graph smoothing for positional embeddings
 - Deformable GCN layers with attention-based aggregation
 - Custom graph construction using KNN
@@ -176,7 +176,7 @@ results/final_test_accuracy
 
 ## Parameters
 
-All core parameters are configured inside `model_training.ipynb`. You can freely tune these.
+All core parameters are configured inside `model_training.ipynb`. Everyone can freely tune these. According to multiple tests, if the epoch value is larger, the accuracy will increase.
 
 | Name        | Description                              | Default |
 |-------------|------------------------------------------|---------|
@@ -201,7 +201,7 @@ Final Test Accuracy: 66.67%
 
 ## Testing
 
-Verify that if the data meets the requirements
+Verify that if that data meets the requirements
 
 ```bash
 python tests.py
@@ -216,4 +216,4 @@ all passed
 
 ## Summary
 
-This project offers a clean and modular implementation of Deformable Graph Convolutional Networks, with a focus on understanding their behavior on heterophilic datasets. By combining smoothed positional embeddings with dynamic attention over latent graphs, the model adapts effectively to non-homophilic structures that are something that traditional GCNs often struggle with.
+This project offers a clean and modular implementation of Deformable Graph Convolutional Networks, with a focus on understanding the behavior on heterophilic datasets. By combining smoothed positional embeddings with dynamic attention over latent graphs, the model adapts effectively to non-homophilic structures that are something that traditional GCNs often struggle with.
