@@ -34,6 +34,8 @@ The key components of this Deformable GCN implementation are:
 ---
 
 ## Model Architecture
+
+### 1. Graph Smoothing Layer (`graphSmoothing`)
 This module applies T-step feature smoothing on the graph to capture long-range dependencies and generate positional embeddings 𝜙.
 
 At each step $\( t \)$, the feature is updated via:
@@ -53,10 +55,39 @@ $$
 ---
 
 ### 2. Deformable GCN Layers (`GCNConvolution`)
-These layers perform message passing with dynamic attention:
-- Uses a learned attention mechanism between `(source, target)` node pairs
-- The message from neighbor nodes is reweighted by learned importance scores
-- Two such layers are stacked: the first maps input to hidden, the second maps hidden to output logits
+
+These layers perform message passing with dynamic attention over latent relation vectors between nodes.
+
+Given a pair of nodes $\( i \)$ and $\( j \)$, their relation vector is defined as:
+
+$$
+r_{ij} = \phi_i - \phi_j
+$$
+
+This relation vector is used to compute an attention coefficient $\( \alpha_{ij} \)$, which controls how much information node $\( i \)$ receives from node $\( j \)$.
+
+The attention score is computed via:
+
+$$
+\alpha_{ij} = \text{softmax}_j \left( \text{MLP}(r_{ij}) \right)
+$$
+
+Then, the message from node $\( j \)$ to $\( i \)$ is modulated as:
+
+$$
+m_{ij} = \alpha_{ij} \cdot W x_j
+$$
+
+Finally, each node aggregates messages from its neighbors:
+
+$$
+x_i^{\text{new}} = \sum_{j \in \mathcal{N}(i)} m_{ij}
+$$
+
+Where:
+- $\( \phi_i \in \mathbb{R}^F \)$ is the smoothed feature of node $\( i \)$.
+- $\( W \in \mathbb{R}^{F \times F'} \)$ is a learnable weight matrix.
+- $\( \mathcal{N}(i) \)$ is the neighborhood of node $\( i \)$.
 
 ---
 
