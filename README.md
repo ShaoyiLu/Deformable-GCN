@@ -29,9 +29,38 @@ The key components of this Deformable GCN implementation are:
    Combines multiple latent graph outputs through a learned attention score to adaptively fuse multi-scale information.
 
 5. **Loss Function**  
-   Includes classification loss, separation loss (`L_sep`) and focus loss (`L_focus`) for better interpretability and training stability.
+   Includes classification loss, separation loss and focus loss for better interpretability and training stability.
 
 ---
 
 ## Project Structure
 
+```bash
+```
+├── data/
+│   ├── raw/
+│   │   └── 10 splits raw .npz files
+│   └── processed/
+│       └── chameleons.csv
+│
+├── notebooks/
+│   └── model_training.ipynb
+│
+├── results/
+|   ├── final_test_accuracy.txt
+│   └── output.txt
+│
+├── src/
+│   ├── data_processing/
+│   │   └── load_data.py
+│   ├── evaluation/
+│   │   └── evaluate.py
+│   ├── models/
+│   │   └── deformable_gcn.py
+│   └── utils/
+│       └── knn_graph.py
+│
+├── tests.py
+├── README.md 
+└── requirements.txt
+```
