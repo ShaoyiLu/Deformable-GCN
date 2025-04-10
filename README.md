@@ -1,13 +1,13 @@
-# Deformable Graph Convolutional Network (Deformable GCN)
+# Deformable Graph Convolutional Network on Chameleon Dataset
 
 ## Introduction
 
-This project implements a reproduction of the paper **"Deformable Graph Convolutional Networks" (Park et al., AAAI 2022)** using PyTorch. The main goal is to address the limitations of standard Graph Neural Networks (GNNs) when applied to **heterophilic graphs**, by learning **node positional embeddings** and applying **deformable convolution kernels** on **latent graphs**.
+This project implements a reproduction of the paper **"Deformable Graph Convolutional Networks"** using PyTorch. The main goal is to address the limitations of standard Graph Neural Networks when applied to **heterophilic graphs**, by learning node positional embeddings and applying deformable convolution kernels on latent graphs.
 
 The project includes:
 - Graph smoothing for positional embeddings
 - Deformable GCN layers with attention-based aggregation
-- Custom graph construction using k-nearest neighbors (kNN)
+- Custom graph construction using KNN
 - Regularization terms to stabilize learning
 
 ---
