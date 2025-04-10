@@ -36,6 +36,7 @@ The key components of this Deformable GCN implementation are:
 ## Project Structure
 
 ```
+name
 ├── data/
 │   ├── raw/
 │   │   └── 10 splits raw .npz files
@@ -62,4 +63,22 @@ The key components of this Deformable GCN implementation are:
 ├── tests.py
 ├── README.md 
 └── requirements.txt
+```
+
+## How to Run the Project
+
+### 1. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 2. Run Model
+
+Open and run all cells in:
+
+```
+notebooks/model_training.ipynb
 ```
