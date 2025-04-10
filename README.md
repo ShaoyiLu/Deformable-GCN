@@ -95,13 +95,13 @@ results/final_test_accuracy
 
 All core parameters are configured inside `model_training.ipynb`. You can freely tune these.
 
-| Name        | Description                                | Default |
-|-------------|--------------------------------------------|---------|
-| `k`         | Number of neighbors for KNN graph          | 16      |
-| `layer`     | Hidden layer size of the GCN               | 256     |
-| `alpha`     | Weight for separation loss                 | 0.001   |
-| `beta`      | Weight for focus loss                      | 0.0001  |
-| `epochs`    | Total number of training epoch             | 400     |
+| Name        | Description                              | Default |
+|-------------|------------------------------------------|---------|
+| `k`         | Number of neighbors for KNN graph        | 16      |
+| `layer`     | Layer size in the GCN model              | 256     |
+| `alpha`     | Weight for separation loss               | 0.001   |
+| `beta`      | Weight for focus loss                    | 0.0001  |
+| `epochs`    | Total number of training epoch           | 400     |
 
 ---
 
