@@ -105,10 +105,10 @@ $$
 L_{sep} = ∑_{c1 ≠ c2} cos(μ_c1, μ_c2)
 $$
 
-**Focus Loss** $\mathcal{L}_{\text{focus}}$: Reduces variation within the same class attention variance:
+**Focus Loss** $\mathcal{L}_{\text{focus}}$: Enforces consistency among intra-class features under attention:
 
 $$
-L_{focus} = ∑{c} ∑{i ∈ C_c} || x_i^att - μ_c^att ||²
+L_{focus} = ∑_{c} ∑_{i ∈ C_c} || x_i^att - μ_c^att ||²
 $$
 
 Where:
